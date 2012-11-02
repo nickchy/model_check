@@ -3,7 +3,7 @@ library(PerformanceAnalytics)
 library(tawny)
 
 #change working directory
-setwd("F:/Works/QuantGlobal")
+setwd("/Users/Nick/model_check")
 
 #rolling window size
 wdsz <- 5
@@ -32,5 +32,11 @@ idx_ret_xts_g <- cumprod(1 + ret_xts_g)
 
 #f <-periodReturn(e,period='yearly')
 
-#rolling returns 
-d <- rollapply(ret_xts_g, width = wdsz, FUN = function(x) {x - 1 } )
+#rolling cumulative returns 
+roll_ret_xts_i <- rollapply(ret_xts_i, width = wdsz, FUN = function(x) {cumprod(1 +x)[wdsz, ] } )
+roll_ret_xts_g <- rollapply(ret_xts_g, width = wdsz, FUN = function(x) {cumprod(1 +x)[wdsz, ] } )
+#write.zoo(d, file = "demo1.csv", sep=",")
+
+mean_ret_g <- rowMeans(roll_ret_xts_g)
+mean_ret_i <- rowMeans(roll_ret_xts_i)
+
