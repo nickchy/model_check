@@ -61,7 +61,7 @@ portfEW <- rep(1/totalAssets, totalAssets)
 # Calculate portfolio returns for the equal weighted portfolio
 portfEWreturns <- Return.portfolio(ret3000, weights = portfEW)
 # graph the cumulative returns for the equal weighted portfolio
-jpeg(file="EW_PortfolioCumulativeReturs.jpg", width = 1280, height = 1024)
+jpeg(file="EW_PortfolioCumulativeReturs.jpg", width = 1024, height = 768)
 chart.CumReturns(portfEWreturns, legend.loc = "topleft", main = "Equal Weighted Portfolio Cumulative Returns")
 dev.off()
 
